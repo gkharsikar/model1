@@ -33,11 +33,16 @@ resource "google_compute_instance" "http_server" {
 
   network_interface {
     subnetwork = "${var.subnet}"
+    subnetwork_project = "${var.project}"
+    network_ip = "10.10.10.5"
 
+/*
     access_config {
       # Include this section to give the VM an external ip address
     }
+*/  
   }
+
 
   # Apply the firewall rule to allow external IPs to access this instance
   tags = ["http-server"]
